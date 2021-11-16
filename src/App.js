@@ -1,8 +1,14 @@
 import React, {Component} from 'react';
-import {BrowserRouter as Router, Route, Link} from 'react-dom';
+import {ReactDOM, BrowserRouter as Router, Route, Routes, Link} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
-import { Container, Navbar, NavbarBrand } from 'react-bootstrap';
+import { Container, Navbar, NavbarBrand, Nav} from 'react-bootstrap';
 import './App.css';
+
+
+import Footer from './components/Footer';
+import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
+import ContactPage from './pages/ContactPage';
 
 class App extends Component {
 
@@ -45,10 +51,30 @@ class App extends Component {
       <Router>
         <Container className = "p-0" fluid = {true}>
 
-          <Navbar className="border-bottom">
-            <Navbar.Brand>Don Strong</Navbar.Brand>
-            
+          <Navbar className="border-bottom" bg="transparent" expand="lg">
+            <Navbar.Brand>
+              <h4 font-family=''>Don Strong</h4>
+              </Navbar.Brand>
+          
+            <Navbar.Toggle className = "border-0" aria-controls="navbar-toggle" />
+            <Navbar.Collapse id = 'navbar-toggle'>
+
+              <Nav className = "ms-auto">
+                <Link className='nav-link' to='/'>Home</Link>
+                <Link className='nav-link' to='/about'>About</Link>
+                <Link className='nav-link' to='/contact'>Contact</Link>
+
+              </Nav>
+            </Navbar.Collapse>
           </Navbar>
+
+          <Routes>
+          <Route path="/" element={<HomePage title={this.state.home.title} subTitle={this.state.home.subTitle} text={this.state.home.text} />} />
+          <Route path="/about" element={<AboutPage title={this.state.about.title} />} />
+          <Route path="/contact" element={<ContactPage title={this.state.contact.title} />} />
+          </Routes>
+
+          <Footer />
 
         </Container>
       </Router>
@@ -56,8 +82,6 @@ class App extends Component {
     );
 
   }
-
-
 }
 
 export default App;
