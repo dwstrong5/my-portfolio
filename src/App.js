@@ -33,7 +33,7 @@ class App extends Component {
       home: {
         title: 'Be Relentless',
         subTitle: 'Projects that make a difference',
-        blurb: 'Checkout these projects',
+        text: 'Checkout these projects',
       },
       about: {
         title: 'About Me',
@@ -51,18 +51,18 @@ class App extends Component {
       <Router>
         <Container className = "p-0" fluid = {true}>
 
-          <Navbar className="border-bottom" bg="transparent" expand="lg">
+          <Navbar className="border-bottom p-3" bg="transparent" expand="lg">
             <Navbar.Brand>
-              <h4 font-family=''>Don Strong</h4>
+              <h5 className="fw-bold">Don Strong</h5>
               </Navbar.Brand>
           
             <Navbar.Toggle className = "border-0" aria-controls="navbar-toggle" />
             <Navbar.Collapse id = 'navbar-toggle'>
 
               <Nav className = "ms-auto">
-                <Link className='nav-link' to='/'>Home</Link>
-                <Link className='nav-link' to='/about'>About</Link>
-                <Link className='nav-link' to='/contact'>Contact</Link>
+                <Link className='nav-link fw-light' to='/'>Home</Link>
+                <Link className='nav-link fw-light' to='/about'>About</Link>
+                <Link className='nav-link fw-light' to='/contact'>Contact</Link>
 
               </Nav>
             </Navbar.Collapse>
