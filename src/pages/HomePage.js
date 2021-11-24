@@ -2,6 +2,7 @@ import { render } from '@testing-library/react';
 import React from 'react';
 import Hero from '../components/Hero';
 import Carousel from '../components/Carousel';
+import ContactForm from '../components/ContactForm'
 
 
 function HomePage(props) {
