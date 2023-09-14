@@ -1,0 +1,20 @@
+.blog-post-date {
+    display: flex;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .blog-post-date::before,
+  .blog-post-date::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #000;
+  }
+  
+  .blog-post-date:not(:empty)::before {
+    margin-right: .25em;
+  }
+  
+  .blog-post-date:not(:empty)::after {
+    margin-left: .25em;
+  }
