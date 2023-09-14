@@ -40,17 +40,15 @@ fs.readFile('config.txt', (err, data) => {
   });
 });
 
-app.get('/', (req, res) => {
-  // Blog.find({}, (err, blogs) => {
-  //   if (err) {
-  //     console.error("Could not retrieve blog posts: ", err);
-  //     res.status(500).send("Internal Server Error");
-  //   } else {
-  //     console.log(blogs)
-  //     res.render("pages/index");
-  //   }
-  // }); 
-  res.render("pages/index");
+app.get('/', async (req, res) => {
+  try {
+    const blogs = await Blog.find({});
+    //console.log(blogs)
+    res.render("pages/index", posts=blogs)
+  } catch (err) {
+    console.error("Error retrieving blog posts: ", err)
+    res.status(500).json({error: "Internal Server Error"});
+  }
 });
 
 app.get('/about', (req, res) => {
