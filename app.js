@@ -4,8 +4,20 @@ const fs = require('fs');
 const mongoose = require('mongoose');
 const app = express();
 const PORT = process.env.PORT || 3000;
+const favicon = require('serve-favicon');
 
-app.use(express.static(path.join(__dirname, 'public/')));
+app.set('view engine', 'ejs');
+app.use(express.static(path.join(__dirname)));
+app.use(favicon(path.join(__dirname + "/assets/favicon.ico")))
+
+const Schema = mongoose.Schema;
+const blogSchema = new Schema({
+  title: String,
+  date: String,
+  body: String
+});
+
+const Blog = mongoose.model('Blog', blogSchema, 'blogs');
 
 // Get MongoDB credentials and generate connection String
 fs.readFile('config.txt', (err, data) => {
@@ -22,15 +34,31 @@ fs.readFile('config.txt', (err, data) => {
   })
   .catch((error) => {
       console.log("Error connecting to MongoDB: ", error);
+  })
+  .finally(() => {
+    console.log("Successfully connected to MongoDB!");
   });
 });
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, "public/index.html"));
+  // Blog.find({}, (err, blogs) => {
+  //   if (err) {
+  //     console.error("Could not retrieve blog posts: ", err);
+  //     res.status(500).send("Internal Server Error");
+  //   } else {
+  //     console.log(blogs)
+  //     res.render("pages/index");
+  //   }
+  // }); 
+  res.render("pages/index");
 });
 
 app.get('/about', (req, res) => {
-  res.sendFile(path.join(__dirname, "/public/assets.html"));
+  res.render("pages/about");
+});
+
+app.get('/contact', (req, res) => {
+  res.render("pages/contact")
 });
 
 app.listen(PORT, () => {
