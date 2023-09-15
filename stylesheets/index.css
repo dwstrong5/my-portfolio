@@ -1,7 +1,6 @@
 .blog-post-date {
     display: flex;
     align-items: center;
-    text-align: center;
   }
   
   .blog-post-date::before,
@@ -12,9 +11,11 @@
   }
   
   .blog-post-date:not(:empty)::before {
-    margin-right: .25em;
+    margin-right: .5em;
+    max-width:2rem;
   }
   
   .blog-post-date:not(:empty)::after {
-    margin-left: .25em;
+    margin-left: 0.5em;
+    flex:1
   }

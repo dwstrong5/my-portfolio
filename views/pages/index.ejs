@@ -10,14 +10,14 @@
     </header>
     <div class="content-container d-flex flex-column align-items-center justify-content-center">
         <%- include('../partials/greeting'); %>
-        <div id="bloglist" class="col col-6">
+        <div id="bloglist" class="col col-lg-6 m-4">
                 <% blogs.forEach(blog => { %>
-                    <div class="blog-post-date">
+                    <div class="blog-post-date mb-2">
                         <%= blog.date %>
                     </div>
                     <h5> <%= blog.title %></h5>                  
                     <div>
-                        <p><%= blog.body %></p>
+                        <p style="text-align: justify;"><%= blog.body %></p>
                     </div>
                 <% }); %>
         </div>
