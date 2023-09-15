@@ -6,9 +6,11 @@
 <body>
     <header>
         <%- include('../partials/navbar'); %>
+        <div class="greeting-container d-flex flex-column align-items-center justify-content-center">
+            <%- include('../partials/greeting'); %>
+        </div>
     </header>
-    <div class="content-container">
-        <%- include('../partials/greeting'); %>    
+    <div class="content-container d-flex flex-column align-items-center justify-content-center">
         <%- include('../partials/contactform'); %>
     </div>
     <footer>
