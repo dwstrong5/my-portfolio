@@ -1,0 +1,9 @@
+#carousel-item-container {
+    margin-left: 25%
+}
+
+@media only screen and (max-width: 1200px) {
+    #carousel-item-container {
+        margin-left: 12.5%;
+    }
+}

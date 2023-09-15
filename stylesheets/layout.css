@@ -11,6 +11,10 @@ body {
     background-color: #F7F9FB;
 }
 
+#navbar-logo:hover, #gh-portfolio-mark:hover {
+    filter: invert(41%) sepia(7%) saturate(3121%) hue-rotate(155deg) brightness(94%) contrast(95%);
+}
+
 .nav-link:hover {
     cursor: pointer;
     color: #31708E;
