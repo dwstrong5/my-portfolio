@@ -59,6 +59,10 @@ app.get('/contact', (req, res) => {
   res.render("pages/contact")
 });
 
+app.get('/resume', (req, res) => {
+  res.render("pages/resume");
+});
+
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}...`);
 });
