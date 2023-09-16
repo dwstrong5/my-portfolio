@@ -15,6 +15,10 @@ body {
     filter: invert(41%) sepia(7%) saturate(3121%) hue-rotate(155deg) brightness(94%) contrast(95%);
 }
 
+.nav-link {
+    color: rgb(69,69,69);
+}
+
 .nav-link:hover {
     cursor: pointer;
     color: #31708E;

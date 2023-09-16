@@ -17,7 +17,13 @@ const blogSchema = new Schema({
   body: String
 });
 
+const infoSchema = new Schema({
+  title: String,
+  content: Array,
+});
+
 const Blog = mongoose.model('Blog', blogSchema, 'blogs');
+const Info = mongoose.model('Info', infoSchema, 'background-info')
 
 // Get MongoDB credentials and generate connection String
 fs.readFile('config.txt', (err, data) => {
@@ -42,7 +48,7 @@ fs.readFile('config.txt', (err, data) => {
 
 app.get('/', async (req, res) => {
   try {
-    const blogs = await Blog.find({});
+    const blogs = await Blog.find({}).sort({date:-1});
     //console.log(blogs)
     res.render("pages/index", {blogs})
   } catch (err) {
@@ -51,8 +57,26 @@ app.get('/', async (req, res) => {
   }
 });
 
-app.get('/about', (req, res) => {
-  res.render("pages/about");
+app.get('/about', async (req, res) => {
+  try {
+    const info = await Info.findOne({title: "About Me"});
+    //console.log(info)
+    res.render("pages/about", {info})
+  } catch (err) {
+    console.error("Error retrieving profile info: ", err)
+    res.status(500).json({error: "Internal Server Error"});
+  }
+});
+
+app.get('/education', async (req, res) => {
+  try {
+    const info = await Info.findOne({title: "Education"});
+    //console.log(info)
+    res.render("pages/education", {info})
+  } catch (err) {
+    console.error("Error retrieving profile info: ", err)
+    res.status(500).json({error: "Internal Server Error"});
+  }
 });
 
 app.get('/contact', (req, res) => {

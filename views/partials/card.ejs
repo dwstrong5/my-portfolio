@@ -1,0 +1,25 @@
+
+<div class="col-11 col-lg-6">
+    <ul id="info-links" class="d-flex justify-content-between mx-0 me-auto my-4">
+        <li class="nav-item" >
+            <h3>
+                <a id="info-link" class="nav-link <%= active === 'about' ? 'active' : '' %>" aria-current="page" href="/about">About Me</a>
+            </h3>
+        </li>
+        <li class="nav-item">
+            <h3>
+                <a id="info-link" class="nav-link <%= active === 'education' ? 'active' : '' %>" aria-current="page" href="/education">Education</a>
+            </h3>
+        </li>
+        <li class="nav-item">
+            <h3>
+                <a id="info-link" class="nav-link <%= active === 'experience' ? 'active' : '' %>" aria-current="page" href="#">Experience</a>
+            </h3>
+        </li>
+    </ul>
+    <% for (let j = 0; j < info.content.length; j++) { %>
+        <p style="text-align: justify;"><%= info.content[j] %></p>
+    <% } %>
+</div>
+
+

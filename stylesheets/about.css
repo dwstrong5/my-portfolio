@@ -1,3 +1,13 @@
+#info-links {
+    list-style: none;
+    text-decoration: none;
+    padding: 0;
+}
+
+h3 .active {
+    color: #31708E;
+}
+
 #carousel-item-container {
     margin-left: 25%
 }
