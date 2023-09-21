@@ -11,7 +11,11 @@ body {
     background-color: #F7F9FB;
 }
 
-#navbar-logo:hover, .footer-container:hover {
+#navbar-logo, #gh-portfolio-mark {
+    filter: invert(16%) sepia(86%) saturate(0%) hue-rotate(242deg) brightness(104%) contrast(76%);
+}
+
+#navbar-logo:hover, #gh-portfolio-mark:hover {
     filter: invert(41%) sepia(7%) saturate(3121%) hue-rotate(155deg) brightness(94%) contrast(95%);
 }
 
@@ -29,4 +33,13 @@ body {
 
 #footer {
     flex-shrink: 0;
+}
+
+#footer-container > a {
+    text-decoration: none;
+    color: rgb(69,69,69);
+}
+
+#footer-container > a:hover {
+    color:#31708E
 }

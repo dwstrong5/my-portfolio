@@ -1,19 +1,25 @@
 
 <div class="col-11 col-lg-6">
     <ul id="info-links" class="d-flex justify-content-between mx-0 me-auto my-4">
-        <li class="nav-item" >
-            <h3>
-                <a id="info-link" class="nav-link <%= active === 'about' ? 'active' : '' %>" aria-current="page" href="/about">About Me</a>
+        <li class="nav-item">
+            <h3 class="info-link-container">
+                <a id="info-link-about" class="nav-link <%= active === 'about' ? 'active' : '' %>" aria-current="page" href="/about">About Me</a>
             </h3>
         </li>
         <li class="nav-item">
-            <h3>
-                <a id="info-link" class="nav-link <%= active === 'education' ? 'active' : '' %>" aria-current="page" href="/education">Education</a>
+            <div class="divider"></div>
+        </li>
+        <li class="nav-item">
+            <h3 class="info-link-container">
+                <a id="info-link-education" class="nav-link <%= active === 'education' ? 'active' : '' %>" aria-current="page" href="/education">Education</a>
             </h3>
         </li>
         <li class="nav-item">
-            <h3>
-                <a id="info-link" class="nav-link <%= active === 'experience' ? 'active' : '' %>" aria-current="page" href="/experience">Experience</a>
+            <div class="divider"></div>
+        </li>
+        <li class="nav-item">
+            <h3 class="info-link-container">
+                <a id="info-link-experience" class="nav-link <%= active === 'experience' ? 'active' : '' %>" aria-current="page" href="/experience">Experience</a>
             </h3>
         </li>
     </ul>
@@ -23,12 +29,14 @@
     <% } %>
     <% } else if(active === 'experience'){ %>
         <% for (let i = 0; i < info.positions.length; i++) { %>
-        <div class="w-100 d-flex justify-content-between">
-            <div class="d-flex mb-2 align-items-end">            
+        <div class="w-100 d-flex flex-column flex-md-row justify-content-md-between">
+            <div class="d-flex flex-column flex-md-row mb-0 mb-md-2 align-items-start align-items-md-end">            
                 <h6 class="mb-0" style="margin-right: 1rem; font-size: 1.1rem;"><%= info.positions[i]['role-title']%></h6>
-                <div style="padding-left: 1rem; margin-right: 1rem; border-left: 2px solid black "><i><%= info.positions[i]['company']%></i></div>
+                <div id="company"><i><%= info.positions[i]['company']%></i></div>
             </div>
-            <%= info.positions[i]['role-from']%> - <%= info.positions[i]['role-to']%>
+            <div class="mb-2 m-md-0">
+                <%= info.positions[i]['role-from']%> - <%= info.positions[i]['role-to']%>
+            </div>
         </div>
         <div class="mb-5">
             <% for (let k = 0; k < info.positions[i]['role-duties'].length; k++) { %>
