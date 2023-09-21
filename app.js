@@ -20,6 +20,7 @@ const blogSchema = new Schema({
 const infoSchema = new Schema({
   title: String,
   content: Array,
+  positions: Array,
 });
 
 const Blog = mongoose.model('Blog', blogSchema, 'blogs');
@@ -73,6 +74,18 @@ app.get('/education', async (req, res) => {
     const info = await Info.findOne({title: "Education"});
     //console.log(info)
     res.render("pages/education", {info})
+  } catch (err) {
+    console.error("Error retrieving profile info: ", err)
+    res.status(500).json({error: "Internal Server Error"});
+  }
+});
+
+app.get('/experience', async (req, res) => {
+  try {
+    const info = await Info.findOne({title: "Experience"});
+    console.log(info)
+    
+    res.render("pages/experience", {info})
   } catch (err) {
     console.error("Error retrieving profile info: ", err)
     res.status(500).json({error: "Internal Server Error"});

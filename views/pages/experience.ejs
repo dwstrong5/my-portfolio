@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../../stylesheets/about.css">
+    <%- include('../partials/head'); %>
+</head>
+<body>
+    <header>
+        <%- include('../partials/navbar'); %>
+        <div class="greeting-container d-flex flex-column align-items-center justify-content-center">
+            <%- include('../partials/greeting'); %>
+        </div>
+    </header>
+    <div class="content-container d-flex flex-column align-items-center justify-content-start">
+
+        <%- include('../partials/card', {info: info, active: "experience"}); %>
+
+
+    </div>
+    <footer>
+        <%- include('../partials/footer'); %>
+    </footer>
+</body>
+</html>

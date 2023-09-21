@@ -13,12 +13,29 @@
         </li>
         <li class="nav-item">
             <h3>
-                <a id="info-link" class="nav-link <%= active === 'experience' ? 'active' : '' %>" aria-current="page" href="#">Experience</a>
+                <a id="info-link" class="nav-link <%= active === 'experience' ? 'active' : '' %>" aria-current="page" href="/experience">Experience</a>
             </h3>
         </li>
     </ul>
+    <% if(active === 'about' || active === 'education') { %> 
     <% for (let j = 0; j < info.content.length; j++) { %>
         <p style="text-align: justify;"><%= info.content[j] %></p>
+    <% } %>
+    <% } else if(active === 'experience'){ %>
+        <% for (let i = 0; i < info.positions.length; i++) { %>
+        <div class="w-100 d-flex justify-content-between">
+            <div class="d-flex mb-2 align-items-end">            
+                <h6 class="mb-0" style="margin-right: 1rem; font-size: 1.1rem;"><%= info.positions[i]['role-title']%></h6>
+                <div style="padding-left: 1rem; margin-right: 1rem; border-left: 2px solid black "><i><%= info.positions[i]['company']%></i></div>
+            </div>
+            <%= info.positions[i]['role-from']%> - <%= info.positions[i]['role-to']%>
+        </div>
+        <div class="mb-5">
+            <% for (let k = 0; k < info.positions[i]['role-duties'].length; k++) { %>
+                <p style="margin-bottom: 0.125rem; text-align: justify;">• <%= info.positions[i]['role-duties'][k]%></p>
+            <% } %>
+        </div>
+    <% } %>
     <% } %>
 </div>
 
