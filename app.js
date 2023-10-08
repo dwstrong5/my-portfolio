@@ -107,7 +107,7 @@ app.get('/resume', (req, res) => {
 });
 
 app.get('/confirm', (req, res) => {
-  res.render("pages/confirmation",  { message: "Thanks, I'll be in touch soon." });
+  res.redirect("contact")
 });
 
 app.post('/confirm', (req, res) => {
@@ -116,7 +116,7 @@ app.post('/confirm', (req, res) => {
   const email = req.body.email;
   const msg = req.body.message;
 
-  if(sendMail({
+  sendMail({
     to: "donald.w.strong5@gmail.com",
     from: "ds.portfoliomailer@gmail.com",
     subject: "New Portfolio Contact Request",
@@ -125,11 +125,8 @@ app.post('/confirm', (req, res) => {
     <p><strong>Email:</strong> ${email}</p>
     <p><strong>Message:</strong> ${msg}</p>
   `
-  })) {
-    res.render("pages/confirmation",  { message: "Thanks, I'll be in touch soon." });
-  } else {
-    res.render("pages/contact");
-  }
+  });
+  res.render("pages/confirmation",  { message: "Thanks, I'll be in touch soon." });
 });
 
 app.listen(PORT, () => {
