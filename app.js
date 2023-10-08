@@ -100,6 +100,10 @@ app.get('/resume', (req, res) => {
   res.render("pages/resume");
 });
 
+app.get('/confirmation', (req, res) => {
+  res.render("pages/confirmation",  { message: "Thanks, I'll be in touch soon." });
+});
+
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}...`);
 });
