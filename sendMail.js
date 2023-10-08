@@ -1,22 +1,23 @@
 const nodemailer = require('nodemailer');
-const getCredentials = require('getCredentials');
+const getCredentials = require('./getCredentials');
 
 const creds = getCredentials();
 
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: creds.mailer-username,
-        pass: creds.mailer-password
+        user: creds.mailerUsername,
+        pass: creds.mailerPassword
     }
 });
 
 const sendMail = async (mailOptions) => {
     try {
         await transporter.sendMail(mailOptions);
-        console.log("Email sent!");
+        return true;
     } catch (err) {
         console.error('Error sending email: ', err);
+        return false;
     }
 };
 

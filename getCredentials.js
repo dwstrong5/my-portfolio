@@ -5,4 +5,4 @@ function getCredentials() {
     return JSON.parse(data);
 }
 
-module.exports = fs.getCredentials;
+module.exports = getCredentials;

@@ -5,10 +5,14 @@ const mongoose = require('mongoose');
 const app = express();
 const PORT = process.env.PORT || 3000;
 const favicon = require('serve-favicon');
+const sendMail = require('./sendMail');
 
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname)));
 app.use(favicon(path.join(__dirname + "/assets/favicon.ico")))
+
+app.use(express.urlencoded({ extended: false }));
+
 
 const Schema = mongoose.Schema;
 const blogSchema = new Schema({
@@ -25,6 +29,8 @@ const infoSchema = new Schema({
 
 const Blog = mongoose.model('Blog', blogSchema, 'blogs');
 const Info = mongoose.model('Info', infoSchema, 'background-info')
+
+
 
 // Get MongoDB credentials and generate connection String
 fs.readFile('config.txt', (err, data) => {
@@ -100,8 +106,30 @@ app.get('/resume', (req, res) => {
   res.render("pages/resume");
 });
 
-app.get('/confirmation', (req, res) => {
+app.get('/confirm', (req, res) => {
   res.render("pages/confirmation",  { message: "Thanks, I'll be in touch soon." });
+});
+
+app.post('/confirm', (req, res) => {
+  const firstname = req.body.firstname;
+  const lastname = req.body.lastname;
+  const email = req.body.email;
+  const msg = req.body.message;
+
+  if(sendMail({
+    to: "donald.w.strong5@gmail.com",
+    from: "ds.portfoliomailer@gmail.com",
+    subject: "New Portfolio Contact Request",
+    html: `
+    <p><strong>Name:</strong> ${firstname} ${lastname}</p>
+    <p><strong>Email:</strong> ${email}</p>
+    <p><strong>Message:</strong> ${msg}</p>
+  `
+  })) {
+    res.render("pages/confirmation",  { message: "Thanks, I'll be in touch soon." });
+  } else {
+    res.render("pages/contact");
+  }
 });
 
 app.listen(PORT, () => {
