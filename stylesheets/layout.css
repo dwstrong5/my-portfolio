@@ -40,6 +40,6 @@ body {
     color: rgb(69,69,69);
 }
 
-#footer-container > a:hover {
-    color:#31708E
+#footer-container:hover * {
+    filter: brightness(0) saturate(100%) invert(41%) sepia(7%) saturate(3121%) hue-rotate(155deg) brightness(94%) contrast(95%);
 }

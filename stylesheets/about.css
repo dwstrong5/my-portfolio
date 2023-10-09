@@ -13,6 +13,8 @@
 
 h3 .active {
     color: #31708E;
+    border-bottom: 2px solid #31708E;
+    padding-bottom: 2px;
 }
 
 #company {

@@ -30,8 +30,6 @@ const infoSchema = new Schema({
 const Blog = mongoose.model('Blog', blogSchema, 'blogs');
 const Info = mongoose.model('Info', infoSchema, 'background-info')
 
-
-
 // Get MongoDB credentials and generate connection String
 fs.readFile('config.txt', (err, data) => {
   if (err) throw err;
@@ -56,7 +54,6 @@ fs.readFile('config.txt', (err, data) => {
 app.get('/', async (req, res) => {
   try {
     const blogs = await Blog.find({}).sort({date:-1});
-    //console.log(blogs)
     res.render("pages/index", {blogs})
   } catch (err) {
     console.error("Error retrieving blog posts: ", err)
@@ -67,7 +64,6 @@ app.get('/', async (req, res) => {
 app.get('/about', async (req, res) => {
   try {
     const info = await Info.findOne({title: "About Me"});
-    //console.log(info)
     res.render("pages/about", {info})
   } catch (err) {
     console.error("Error retrieving profile info: ", err)
@@ -78,7 +74,6 @@ app.get('/about', async (req, res) => {
 app.get('/education', async (req, res) => {
   try {
     const info = await Info.findOne({title: "Education"});
-    //console.log(info)
     res.render("pages/education", {info})
   } catch (err) {
     console.error("Error retrieving profile info: ", err)
@@ -89,8 +84,6 @@ app.get('/education', async (req, res) => {
 app.get('/experience', async (req, res) => {
   try {
     const info = await Info.findOne({title: "Experience"});
-    console.log(info)
-    
     res.render("pages/experience", {info})
   } catch (err) {
     console.error("Error retrieving profile info: ", err)
@@ -126,7 +119,7 @@ app.post('/confirm', (req, res) => {
     <p><strong>Message:</strong> ${msg}</p>
   `
   });
-  res.render("pages/confirmation",  { message: "Thanks, I'll be in touch soon." });
+  res.render("pages/confirm",  { message: "Thanks, I'll be in touch soon." });
 });
 
 app.listen(PORT, () => {
